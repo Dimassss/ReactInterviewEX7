@@ -1,30 +1,30 @@
 import axios from "../plugins/axios";
 
 export type Country = {
-    Id: number,
+    Id?: number,
     Symbol: string,
     Nazwa: string
 }
 
 const CountryAPI = {
     async get(){
-        try {
-            const res = await axios.get("kraje")
-            const coutries = res.data.value
+        const res = await axios.get("kraje")
+        const countries = res.data.value
 
-            return coutries
-        } catch(e) {
-            return []
-        }
+        return countries
     },
 
     async update(country: Country) {
-        try {
-            // I have not installed that config for postman, but suppose that API will look like this
-            await axios.patch("kraje")
-        } catch(e) {
-            console.error(e)
-        }
+        await axios.patch(`kraje(${country.Id})`, country)
+    },
+
+    async create(country: Country) {
+        const c = await axios.post("kraje", country)
+        return c.data as Country
+    },
+
+    async delete(country: Country) {
+        await axios.delete(`kraje(${country.Id})`)
     }
 }
 

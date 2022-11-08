@@ -9,10 +9,11 @@ type Props = {
     idKey: keyof Country,      // key of id column in countries
     header: headerElement[],
     countries: Country[],
-    onEdit: (el: Country) => void
+    onEdit: (el: Country) => void,
+    onDelete: (el: Country) => void,
 }
 
-export default function TableCountries({header, countries, idKey, onEdit}: Props){
+export default function TableCountries({header, countries, idKey, onEdit, onDelete}: Props){
     return (<table>
         <thead>
           <tr>
@@ -32,7 +33,10 @@ export default function TableCountries({header, countries, idKey, onEdit}: Props
                   <td>
                     <a href="#" className='with-underline' onClick={() => {
                         onEdit(el)
-                    }}>EDYCJA</a>
+                    }}>[EDYCJA]</a>
+                    <a href="#" className='with-underline' onClick={() => {
+                        onDelete(el)
+                    }}>[USUŃ]</a>
                   </td>
                 </tr>)
             })

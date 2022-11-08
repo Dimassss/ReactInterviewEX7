@@ -14,9 +14,9 @@ export default function CountryForm({country, onSubmit, onCancle}: Props) {
         <label htmlFor="symbol">Symbol</label>
         <input 
           id="symbol" 
-          defaultValue={country.Symbol}
+          value={editCountry.Symbol}
           onChange={
-            e => setEditCountry({...country, Symbol: e.currentTarget.value})
+            e => setEditCountry({...editCountry, Symbol: e.currentTarget.value})
           }
         />
         <br/>
@@ -24,9 +24,9 @@ export default function CountryForm({country, onSubmit, onCancle}: Props) {
         <label htmlFor="nazwa">Nazwa</label>
         <input 
           id="nazwa" 
-          defaultValue={country.Nazwa} 
+          value={editCountry.Nazwa} 
           onChange={
-            e => setEditCountry({...country, Nazwa: e.currentTarget.value})
+            e => setEditCountry({...editCountry, Nazwa: e.currentTarget.value})
           }
         />
         <br/>
