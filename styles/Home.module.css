@@ -3,6 +3,8 @@
   width: 500px;
 }
 
-a.with-underline {
-  text-decoration: underline;
+.container-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
