@@ -1,14 +1,20 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Country } from "../../api/countries"
 
 type Props = {
-    country: Country,
+    country: Country | null,
     onSubmit: (c: Country) => void,
     onCancle: () => void
 }
 
 export default function CountryForm({country, onSubmit, onCancle}: Props) {
     const [editCountry, setEditCountry] = useState(country)
+
+    useEffect(() => {
+      setEditCountry(country)
+    }, [country])
+
+    if(!editCountry) return <></>
 
     return (<form>
         <label htmlFor="symbol">Symbol</label>
